@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{{$title or '网站后台'}}}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{$data['title'] or '网站后台'}}</title>
     <!-- Bootstrap core CSS-->
     <link href="/admins/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -16,6 +17,7 @@
     <link href="/admins/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="/admins/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="/admins/css/main.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -29,17 +31,65 @@
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-wrench"></i>
+                    <i class="fa fa-fw fa-user"></i>
                     <span class="nav-link-text">用户管理</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="navbar.html">用户添加</a>
+                        <a href="/user/create">用户添加</a>
                     </li>
                     <li>
-                        <a href="cards.html">用户列表</a>
+                        <a href="/user">用户列表</a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#arccate" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">分类管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="arccate">
+                    <li>
+                        <a href="/arccate/create">分类添加</a>
+                    </li>
+                    <li>
+                        <a href="/arccate">分类列表</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#tag" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">标签管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="tag">
+                    <li>
+                        <a href="/tag/create">标签添加</a>
+                    </li>
+                    <li>
+                        <a href="/tag">标签列表</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#arc" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">文章管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="arc">
+                    <li>
+                        <a href="/article/create">文章添加</a>
+                    </li>
+                    <li>
+                        <a href="/article">文章列表</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="" data-placement="right" title="Components">
+                <a class="nav-link" href="/config">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">网站配置</span>
+                </a>
             </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
@@ -105,9 +155,18 @@
 <!-- 左侧导航 end -->
 
 <div class="content-wrapper">
-    <div class="container-fluid">
 
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">网站后台</a>
+            </li>
+            <li class="breadcrumb-item active">{{$data['title'] or ''}}</li>
+        </ol>
+        @section('content')
+        @show
     </div>
+
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
@@ -134,11 +193,55 @@
                 <div class="modal-body">确认离开么?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                    <a class="btn btn-primary" href="login.html">退出</a>
+                    <form action="/logout" method="post">
+                        {{csrf_field()}}
+                        <button class="btn btn-primary" href="/logout">退出</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="remind" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">提示信息</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="msg"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">文件上传</h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1"><button  domain="{{env("QINIU_URL")}}" bucket="{{env("QINIU_BUCKET")}}" token="{{$data['qiniu_token'] or ''}}" type="button" class="form-control" id="common-upload">点击上传</button></label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8 pull-left">
+                                <input type="text"  class="form-control" id="uploaded-url" aria-describedby="emailHelp" placeholder="">
+                            </div>
+                            <div class="col-md-4 pull-left">
+                                <button id="copy" type="button" class="btn btn-danger">点击复制</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="/admins/vendor/jquery/jquery.min.js"></script>
     <script src="/admins/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -152,7 +255,20 @@
     <script src="/admins/js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="/admins/js/sb-admin-datatables.min.js"></script>
-    <script src="/admins/js/sb-admin-charts.min.js"></script>
+    <script src="/bower_components/plupload/js/plupload.full.min.js"></script>
+    <script src="/bower_components/qiniu/dist/qiniu.min.js"></script>
+    <script src="/bower_components/zeroclipboard/dist/ZeroClipboard.min.js"></script>
+    <script src="/admins/js/main.js"></script>
+
+    @if(session('msg'))
+    <script>
+        $(function(){
+            remind('{{session('msg')}}')
+        })
+    </script>
+    @endif
+
+    @yield('js')
 </div>
 </body>
 

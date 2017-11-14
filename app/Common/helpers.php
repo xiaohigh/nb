@@ -1,0 +1,36 @@
+<?php
+/**
+ * 执行成功或者失败之后的提醒跳转 操作
+ */
+function rt($status, $msg, $url) {
+    $tmp = $status==1 ? redirect($url) : back();
+    //返回
+    return $tmp->with([
+        'status' => $status,
+        'msg' => $msg
+    ]);
+}
+
+/**
+ * 返回json数据
+ */
+function rjson($status, $msg='', $data=[]) {
+    return json_encode([
+        'status'=>$status,
+        'msg' => $msg,
+        'data' => $data
+    ]);
+}
+
+/**
+ * 自定义配置
+ */
+function C($key)
+{
+    static $configs = null;
+    //如果配置数组为空
+    if(!$configs) {
+        $configs = \App\Models\Config::find(1);
+    }
+    return $configs->$key ? : '';
+}
