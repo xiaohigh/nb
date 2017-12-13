@@ -14,14 +14,10 @@ class CreateTableArticleTag extends Migration
     public function up()
     {
         //
-        if(!Schema::hasTable('article_tag')) {
-            Schema::create('article_tag', function (Blueprint $table) {
-                $table->integer('article_id');
-                $table->integer('tag_id');
-            });
-        }else{
-
-        }
+        Schema::create('article_tag', function (Blueprint $table) {
+            $table->integer('article_id');
+            $table->integer('tag_id');
+        });
     }
 
     /**
@@ -31,7 +27,6 @@ class CreateTableArticleTag extends Migration
      */
     public function down()
     {
-        //
-        //Schema::dropIfExists('tags');
+        Schema::dropIfExists('article_tag');
     }
 }

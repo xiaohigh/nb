@@ -13,19 +13,13 @@ class CreateArcCatesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('arc_cates')) {
-            //表不存在创建表
-            Schema::create('arc_cates', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('name')->comment('分类名称');
-                $table->integer('pid')->comment('父级分类id');
-                $table->string('path')->comment('分类路径');
-                $table->timestamps();
-            });
-        }else{
-
-        }
-
+        Schema::create('arc_cates', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->comment('分类名称');
+            $table->integer('pid')->comment('父级分类id');
+            $table->string('path')->comment('分类路径');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -35,6 +29,6 @@ class CreateArcCatesTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('arc_cates');
+        Schema::dropIfExists('arc_cates');
     }
 }

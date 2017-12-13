@@ -3,7 +3,7 @@
  * 执行成功或者失败之后的提醒跳转 操作
  */
 function rt($status, $msg, $url) {
-    $tmp = $status==1 ? redirect($url) : back();
+    $tmp = !empty($url) ? redirect($url) : back();
     //返回
     return $tmp->with([
         'status' => $status,

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Forms\User\AddForm;
 use App\Forms\User\UpdateForm;
 
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -138,6 +139,27 @@ class UserController extends Controller
             return rjson(1, '成功');
         }else{
             return rjson(0, '失败');
+        }
+
+    }
+
+    /**
+     * 激活用户
+     * @param $token 用户验证token
+     */
+    public function confirmEmail($token)
+    {
+        //激活用户
+        $user = User::where('activation_token', $token)->firstOrFail();
+
+        $user->activation_token = null;
+        $user->activated = true;
+
+        if($user->save()) {
+            Auth::login($user);
+            return rt(1, '更新成功', url('/'));
+        }else{
+            return rt(0, '更新失败', url('/'));
         }
 
     }

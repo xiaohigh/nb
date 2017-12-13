@@ -163,6 +163,15 @@
             </li>
             <li class="breadcrumb-item active">{{$data['title'] or ''}}</li>
         </ol>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @section('content')
         @show
     </div>

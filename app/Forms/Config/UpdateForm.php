@@ -3,7 +3,7 @@
 namespace App\Forms\Config;
 
 use Kris\LaravelFormBuilder\Form;
-use App\User;
+use App\Models\User;
 
 class UpdateForm extends Form
 {

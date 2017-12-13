@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\ArcCate;
 use App\Models\Article;
 use App\Models\Tag;
@@ -59,7 +60,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, \Parsedown $parsedown)
+    public function store(ArticleRequest $request, \Parsedown $parsedown)
     {
         //创建模型对象
         $article = new Article;
@@ -146,7 +147,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,\Parsedown $parsedown)
+    public function update(ArticleRequest $request, $id,\Parsedown $parsedown)
     {
         $article = Article::findOrFail($id);
 

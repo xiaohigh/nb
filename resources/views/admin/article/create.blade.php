@@ -6,7 +6,7 @@
     <form action="/article" method="post">
         <div class="form-group col-md-4">
             <label for="exampleInputEmail1">标题</label>
-            <input class="form-control" id="exampleInputEmail1" name="title" type="text" aria-describedby="emailHelp" placeholder="">
+            <input class="form-control" id="exampleInputEmail1" value="{{old('title')}}" name="title" type="text" aria-describedby="emailHelp" placeholder="">
         </div>
         <div class="form-group col-md-4">
             <label for="exampleInputEmail1">分类</label>
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="exampleInputPassword1">图片</label>
-            <input class="form-control" name="pic" id="exampleInputPassword1" type="hidden">
+            <input class="form-control" name="pic" value="{{old('pic')}}" id="exampleInputPassword1" type="text">
             <div style="min-height:50px;border:solid 1px #ddd;padding:20px;">
                 <img src="" id="preview" width="200" alt="">
             </div>
@@ -30,12 +30,12 @@
         </div>
         <div class="form-group col-md-6">
             <label for="exampleInputPassword1">摘要</label>
-            <textarea name="intro" class="form-control"></textarea>
+            <textarea name="intro" class="form-control">{{old('intro')}}</textarea>
         </div>
 
         <div class="form-group col-md-12">
             <label for="exampleInputPassword1">内容</label>
-            <div id="markdown"></div>
+            <div id="markdown">{{old('markdown')}}</div>
         </div>
 
         <div class="form-group col-md-4">
@@ -88,6 +88,7 @@
                 //toolbar  : false,             //关闭工具栏
                 //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
                 emoji : true,
+                value:'{{old('markdown')}}',
                 taskList : true,
                 tocm            : true,         // Using [TOCM]
                 tex : true,                   // 开启科学公式TeX语言支持，默认关闭
