@@ -9,7 +9,6 @@
 //登录授权路由组
 Auth::routes();
 
-Route::get('/register/confirm/{token}', 'UserController@confirmEmail')->name('confirm_email');
 //前台路由组
 Route::group([], function(){
 
@@ -22,6 +21,11 @@ Route::group([], function(){
 
     //博客列表
     Route::get('/blog','ArticleController@list');
+
+    //邮箱验证
+    Route::get('/register/confirm/{token}', 'UserController@confirmEmail')->name('confirm_email');
+
+    Route::get('/test', 'CommonController@test');
 
 });
 

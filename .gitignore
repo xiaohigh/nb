@@ -13,4 +13,5 @@ yarn-error.log
 .env
 /public/bower_components
 .DS_Store
+/public/uploads
 

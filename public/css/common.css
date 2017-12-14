@@ -1,5 +1,5 @@
-.container{
-    padding-top:10px;
+body{
+    background:#eee;
 }
 
 #logo{
@@ -21,17 +21,12 @@ header{
     border:solid 1px #ddd;
 }
 
-#content aside{
-    padding:0px;
-}
 
 #content .left{
     padding-right:20px;
 }
 
-#content .item-list > li:first-child{
-    padding-top: 0px;
-}
+
 
 #content .item-list > li:last-child{
     border:none;
@@ -40,8 +35,10 @@ header{
 #content .item-list > li{
     height:auto;
     overflow:hidden;
-    padding:20px 0px;
     border-bottom:solid 1px #eee;
+    background: #fff;
+    padding:20px;
+    margin-bottom:20px;
 }
 
 #content .item-list .img{
@@ -77,7 +74,12 @@ header{
 
 footer{
     height:auto;
-    background:#eee;
+    background:#fff;
+}
+
+.detail{
+    background: #fff;
+    padding:20px;
 }
 
 .detail h1{
@@ -93,3 +95,8 @@ footer{
 #tags .panel-body .active{
     background:#0099CC
 }
+
+.navbar-default {
+    background: #fff;
+}
+

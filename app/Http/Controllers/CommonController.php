@@ -8,9 +8,16 @@ use Qiniu\Auth;
 // 引入上传类
 use Qiniu\Storage\UploadManager;
 
+use Faker\Generator as Faker;
+
 class CommonController extends Controller
 {
-    //
+    /**
+     * markdown 编辑器上传文件到七牛云
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function markdownUpload(Request $request)
     {
         //将文件直接上传到七牛云
@@ -39,8 +46,9 @@ class CommonController extends Controller
     }
 
 
-    public function test()
+    public function test(Faker $faker)
     {
-        return view('test');
+        $faker->addProvider(new \Faker\Provider\zh_CN\Payment($faker));
+        dd($faker->bank());
     }
 }

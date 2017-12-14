@@ -1,8 +1,6 @@
 @extends('layouts.home')
 
-@section('title')
-    博客列表
-@endsection
+@section('title','博客列表')
 
 @section('content')
 <!-- 左侧侧边栏 start -->
@@ -10,7 +8,7 @@
     <ul class="list-unstyled item-list">
         @if(count($blogs) == 0)
         <li class="text-center">暂无数据</li>
-        @endif
+        @else
         @foreach($blogs as $k=>$v)
         <li>
             <div class="col-md-4 img">
@@ -24,6 +22,7 @@
             </div>
         </li>
         @endforeach
+        @endif
     </ul>
 
     <nav aria-label="Page navigation" class="">
@@ -37,7 +36,7 @@
 <!-- 右侧侧边栏 start -->
 <aside class="col-md-3 right">
 
-    @component('home.components.tags', ['url' => '/blog'])
+    @component('home.components.tags', ['tags' => $tags,'url'=>'/blog','request'=>$request])
     @endcomponent
 
     @component('home.components.author')

@@ -4,7 +4,7 @@
     <div class="panel-body text-center">
         <!-- 头像 start -->
         <div>
-            <img data-src="holder.js/80x80?text=图" src="{{C('author_pic')}}" width="80" class="img-circle img-thumbnail img-responsive">
+            <img data-src="holder.js/80x80?text=图" src="" width="80" class="img-circle img-thumbnail img-responsive">
         </div>
         <!-- 头像 end -->
         <div class="message">

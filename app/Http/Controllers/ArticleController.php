@@ -107,13 +107,19 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         //获取文章模型
         $article = Article::findOrFail($id);
 
+        //获取标签
+        $tags = Tag::all();
+
+        //获取分类
+        $cates = ArcCate::all();
+
         //解析模板
-        return view('home.blog.show', compact('article'));
+        return view('home.blog.show', compact('article','tags','cates','request'));
     }
 
     /**
@@ -215,6 +221,7 @@ class ArticleController extends Controller
      */
     public function list(Request $request)
     {
+        //获取文章信息
         $blogs = Article::where(function($query)use($request){
             //判断分类id
             if(!empty($request->cate_id)) {
@@ -236,8 +243,14 @@ class ArticleController extends Controller
                     $query->whereIn('id', array_map(function($v){return $v->article_id;}, $blog_ids));
                 }
             }
-        })->paginate(5);
+        })->orderBy('id','desc')->paginate(5);
 
-        return view('home.blog.list', compact('blogs'));
+        //获取标签信息
+        $tags = Tag::all();
+
+        //读取分类信息
+        $cates = ArcCate::all();
+
+        return view('home.blog.list', compact('blogs','tags','request','cates'));
     }
 }
