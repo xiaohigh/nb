@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/bower_components/github-markdown-css/github-markdown.css">
-    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css?a={{rand(1,10000)}}">
 </head>
 <body>
 <!-- 导航 start -->
@@ -33,9 +33,9 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="nav">
-                    <li class="@if(!$request->cate_id) active @endif"><a href="/">首页</a></li>
-                    @foreach($cates as $k=>$v)
-                    <li class="@if($request->cate_id == $v->id) active @endif"><a href="{{url('/blog?cate_id='.$v->id)}}">{{$v->name}}</a></li>
+                    <li class="@if(!request('cate_id')) active @endif"><a href="/">首页</a></li>
+                    @foreach(getTopMenu() as $k=>$v)
+                    <li class="@if(request('cate_id') == $v->id) active @endif"><a href="{{url('/blog?cate_id='.$v->id)}}">{{$v->name}}</a></li>
                     @endforeach
                     <li>　 </li>
                 </ul>
@@ -69,8 +69,8 @@
 </nav>
 <!-- 导航 end -->
 
+@section('container')
 <div class="container">
-
     <!-- 内容 start -->
     <section id="content">
         <!-- 中间内容 start -->
@@ -89,8 +89,8 @@
     <!-- 内容 end -->
     <div class="clearfix"></div>
     <hr>
-
 </div>
+@show
 
 <footer>
     <div class="text-center copyright">Copyright © 2017 All Rights Reserved. 京ICP备13041202号 Powered by xiaohigh</div>

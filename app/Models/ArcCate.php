@@ -44,4 +44,5 @@ class ArcCate extends Model
         return $cates;
     }
 
+
 }

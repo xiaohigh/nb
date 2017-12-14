@@ -34,3 +34,8 @@ function C($key)
     }
     return $configs->$key ? : '';
 }
+
+function getTopMenu()
+{
+    return \App\Models\ArcCate::get();
+}

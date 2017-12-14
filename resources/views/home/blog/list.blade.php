@@ -26,7 +26,7 @@
     </ul>
 
     <nav aria-label="Page navigation" class="">
-        {{$blogs->appends($request->all())->render()}}
+        {{$blogs->appends(request()->all())->render()}}
     </nav>
 </aside>
 <!-- 左侧侧边栏 start -->
@@ -36,7 +36,7 @@
 <!-- 右侧侧边栏 start -->
 <aside class="col-md-3 right">
 
-    @component('home.components.tags', ['tags' => $tags,'url'=>'/blog','request'=>$request])
+    @component('home.components.tags', ['tags' => $tags])
     @endcomponent
 
     @component('home.components.author')

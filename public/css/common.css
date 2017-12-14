@@ -110,3 +110,15 @@ footer{
     background: #fff;
 }
 
+.register{
+    padding:50px 0px;
+}
+
+.login{
+    padding:50px 0px;
+}
+
+.register .panel .panel-heading{
+    background: #fff;
+}
+

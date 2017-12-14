@@ -34,7 +34,7 @@
     <!-- 右侧侧边栏 start -->
     <aside class="col-md-3 right">
 
-        @component('home.components.tags', ['url' => '/blog','tags'=>$tags,'request'=>$request])
+        @component('home.components.tags', ['tags'=>$tags])
         @endcomponent
 
         @component('home.components.author')
