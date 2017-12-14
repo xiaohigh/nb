@@ -25,7 +25,13 @@ Route::group([], function(){
     //邮箱验证
     Route::get('/register/confirm/{token}', 'UserController@confirmEmail')->name('confirm_email');
 
+    //
+    Route::get('/exit', 'Auth\LoginController@logout')->name('exit');
+
+
     Route::get('/test', 'CommonController@test');
+
+
 
 });
 
