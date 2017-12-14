@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'zh_CN',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,7 +160,6 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
@@ -179,7 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\SaiyouServiceProvider::class,
         //表单创建提供器
-        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
 
     ],
 

@@ -48,7 +48,7 @@ class CommonController extends Controller
 
     public function test(Faker $faker)
     {
-        $faker->addProvider(new \Faker\Provider\zh_CN\Payment($faker));
-        dd($faker->bank());
+        //测试翻译
+        dd(trans('user.test'));
     }
 }
