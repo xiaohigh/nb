@@ -85,6 +85,20 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#course" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">课程管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="course">
+                    <li>
+                        <a href="/course/create">课程添加</a>
+                    </li>
+                    <li>
+                        <a href="/course">课程列表</a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item" data-toggle="" data-placement="right" title="Components">
                 <a class="nav-link" href="/config">
                     <i class="fa fa-fw fa-user"></i>

@@ -122,3 +122,27 @@ footer{
     background: #fff;
 }
 
+.course{
+    padding-bottom:20px;
+    height:auto;
+    overflow: hidden;
+}
+
+.course .pic{
+    background: #fff;
+    padding:20px;
+}
+
+.course .lessons{
+    background: #fff;
+    padding:20px;
+}
+
+.no-padding{
+    padding:0px;
+}
+
+.video{
+    height:auto;
+    overflow: hidden;
+}
