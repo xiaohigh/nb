@@ -48,7 +48,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle block" data-toggle="dropdown" role="button"><img src="holder.js/30x30" class="img-circle profile" alt="">&nbsp;xiaohigh <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle block" data-toggle="dropdown" role="button"><img data-src="holder.js/30x30?text=TT" src="{{env('QINIU_URL')}}{{Auth::user()->profile}}" width="30" class="img-circle profile" alt="">&nbsp;&nbsp;&nbsp;{{Auth::user()->name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">个人中心</a></li>
                             <li role="separator" class="divider"></li>

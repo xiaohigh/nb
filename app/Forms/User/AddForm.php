@@ -10,12 +10,19 @@ class AddForm extends Form
     {
         // Add fields here...
         $this
+            ->add('name', 'text', [
+                'rules' => 'required',
+                'label' => '昵称'
+            ])
             ->add('email', 'text', [
                 'rules' => 'required|email|unique:users,email',
                 'label' => '邮箱',
                 'error_messages' => [
                     'email.email' => '邮箱格式有误'
                 ]
+            ])
+            ->add('profile', 'file', [
+                'label' => '头像'
             ])
             ->add('password', 'password', [
                 'rules' => 'required',

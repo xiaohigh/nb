@@ -204,7 +204,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
                     <form action="/logout" method="post">
                         {{csrf_field()}}
-                        <button class="btn btn-primary" href="/logout">退出</button>
+                        <button class="btn btn-primary">退出</button>
                     </form>
                 </div>
             </div>

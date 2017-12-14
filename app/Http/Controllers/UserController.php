@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tools\Qiniu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
@@ -60,8 +61,9 @@ class UserController extends Controller
         //获取用户数据
         $user = new User;
         $user->email = $request->email;
-        $user->password = encrypt($request->password);
-
+        $user->password = bcrypt($request->password);
+        $user->name = $request->name;
+        $user->profile = Qiniu::uploadFile($request->profile);
         if($user->save()) {
             return rt(1, '添加成功', '/user');
         }else{
@@ -116,6 +118,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         //更新数据
         $user->email = $request->email;
+        $user->name = $request->name;
+        if($request->hasFile('profile')) {
+            $user->profile = Qiniu::uploadFile($request->profile);
+        }
 
         if($user->save()) {
             return rt(1, '更新成功', url('/user'));
