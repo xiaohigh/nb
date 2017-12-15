@@ -84,7 +84,13 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::findOrFail($id);
+
+        $tags = Tag::all();
+
+        $token = Qiniu::getToken();
+
+        return view('admin.course.edit', compact('course','tags','token'));
     }
 
     /**
@@ -94,9 +100,25 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, \Parsedown $parsedown)
     {
-        //
+        $course = Course::findOrFail($id);
+        $course -> title = $request->title;
+        $course -> price = $request->price;
+        $course -> pic = $request->pic;
+        $course -> content_m = $request->content_m;
+        $course -> content = $parsedown->text($request->content_m);
+
+        //插入数据库
+        if($course -> save()) {
+            //处理标签
+            $tags = handleTags($request->tag_id);
+            //插入标签
+            $course->tags()->sync($tags);
+            return redirect('/course')->with('msg','课程更新成功');
+        } else {
+            return back()->with('error','更新失败!!!');
+        }
     }
 
     /**
@@ -107,6 +129,14 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //删除
+        $course = Course::findOrFail($id);
+        //删除标签
+        $course->tags()->detach();
+        if($course->delete()) {
+            return rjson(1, '删除成功');
+        }else{
+            return rjson(2, '删除失败');
+        }
     }
 }

@@ -35,6 +35,10 @@ function C($key)
     return $configs->$key ? : '';
 }
 
+/**
+ * 获取顶部菜单
+ * @return mixed
+ */
 function getTopMenu()
 {
     return \App\Models\ArcCate::get();

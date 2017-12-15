@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ArcCateTableSeeder::class);
         $this->call(TagTableSeeder::class);
         $this->call(ArticleTableSeeder::class);
+        $this->call(CourseTableSeeder::class);
     }
 }

@@ -9,34 +9,7 @@ $.ajaxSetup({
 });
 
 $(function(){
-    //点击删除按钮删除元素
-    $('.del').click(function(){
-        //获取tr元素
-        var tr = $(this).parents('tr');
-        //确认
-        var res = confirm('确定要删除么?');
-        if(res) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            //获取url
-            var url = $(this).attr('href');
-            var data = {'_method':'delete'};
-            $.post(url, data, function(data){
-                if(data.status == 1) {
-                    tr.remove();
-                    remind('删除成功');
-                }else{
-                    remind('删除失败');
-                }
-            },'json');
-        }else{
-
-        }
-        return false;
-    })
+    
 
 
     //键盘按下事件 用于弹出上传文件组件

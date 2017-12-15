@@ -248,7 +248,7 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1"><button  domain="{{env("QINIU_URL")}}" bucket="{{env("QINIU_BUCKET")}}" token="{{$data['qiniu_token'] or ''}}" type="button" class="form-control" id="common-upload">点击上传</button></label>
+                            <label for="exampleInputEmail1"><button  domain="{{env("QINIU_URL")}}" bucket="{{env("QINIU_BUCKET")}}" token="{{\App\Tools\Qiniu::getToken()}}" type="button" class="form-control" id="common-upload">点击上传</button></label>
                         </div>
                         <div class="form-group">
                             <div class="col-md-8 pull-left">
