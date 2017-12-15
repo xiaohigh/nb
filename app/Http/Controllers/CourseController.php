@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Tag;
 use App\Tools\Qiniu;
 use Illuminate\Http\Request;
@@ -15,7 +16,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        //读取课程
+        $courses = Course::all();
+
+        return view('admin.course.list',compact('courses'));
     }
 
     /**
@@ -40,9 +44,25 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, \Parsedown $parsedown)
     {
-        //
+        $course = new Course;
+        $course -> title = $request->title;
+        $course -> price = $request->price;
+        $course -> pic = $request->pic;
+        $course -> content_m = $request->content_m;
+        $course -> content = $parsedown->text($request->content_m);
+
+        //插入数据库
+        if($course -> save()) {
+            //处理标签
+            $tags = handleTags($request->tag_id);
+            //插入标签
+            $course->tags()->sync($tags);
+            return redirect('/course')->with('msg','课程添加成功');
+        } else {
+            return back()->with('error','添加失败!!!');
+        }
     }
 
     /**

@@ -32,7 +32,6 @@ Route::group([], function(){
     Route::get('/test', 'CommonController@test');
 
 
-
 });
 
 //后台路由组

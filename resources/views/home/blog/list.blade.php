@@ -4,13 +4,13 @@
 
 @section('content')
 <!-- 左侧侧边栏 start -->
-<aside class="col-md-9 left">
+<aside class="col-md-9 left article-list">
     <ul class="list-unstyled item-list">
         @if(count($blogs) == 0)
         <li class="text-center">暂无数据</li>
         @else
         @foreach($blogs as $k=>$v)
-        <li>
+        <li class="shadow">
             <div class="col-md-4 img">
                 <a href="{{route('blog-detail',['id'=>$v->id])}}"><img src="{{$v->pic}}" class="img-responsive img-thumbnail"></a>
             </div>

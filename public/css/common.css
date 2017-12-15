@@ -146,3 +146,20 @@ footer{
     height:auto;
     overflow: hidden;
 }
+
+.shadow{
+    box-shadow: 0 10px 40px 0 rgba(62,57,107,.07), 0 2px 9px 0 rgba(62,57,107,.06);
+    transition: all .2s ease;
+}
+
+.courses{
+
+}
+
+.courses .item{
+    padding:15px;
+    background: #fff;
+    margin-bottom:20px;
+}
+
+.course .item{}

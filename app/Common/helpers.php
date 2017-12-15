@@ -39,3 +39,12 @@ function getTopMenu()
 {
     return \App\Models\ArcCate::get();
 }
+
+/**
+ * 解析字符串
+ * @param String $str
+ */
+function handleTags(String $str=null)
+{
+    return $str ? explode('_', trim($str,'_')) : [];
+}

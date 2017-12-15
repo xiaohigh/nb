@@ -20,5 +20,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('xiaohigh'),
         'remember_token' => str_random(10),
+        'profile' => $faker->imageUrl(200,200),
+        'name' => $faker->name,
     ];
 });
