@@ -18,6 +18,9 @@
     @yield('css')
 </head>
 <body>
+@section('top-bar')
+    <div id="topbar"></div>
+@show
 <!-- 导航 start -->
 <nav class="navbar navbar-default">
     <div class="container">
