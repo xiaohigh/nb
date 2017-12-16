@@ -64,6 +64,8 @@
 </nav>
 <!-- 导航 end -->
 
+@include('home.share.notifacation')
+
 @section('container')
 <div class="container">
     <!-- 内容 start -->

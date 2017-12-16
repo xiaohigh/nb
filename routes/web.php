@@ -5,6 +5,7 @@
 | Web Routes
 |--------------------------------------------------------------------------
 */
+Route::get('/test', 'CommonController@test');
 
 //登录授权路由组
 Auth::routes();
@@ -31,10 +32,7 @@ Route::group([], function(){
 
     //课程详情
     Route::get('/course/{id}', 'CourseController@show')->name('course-detail');
-
-
-    Route::get('/test', 'CommonController@test');
-
+    
     //退出登录
     Route::get('/exit', 'Auth\LoginController@logout')->name('exit');
 });

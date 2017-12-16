@@ -162,6 +162,7 @@ class UserController extends Controller
         $user->activated = true;
 
         if($user->save()) {
+            session()->flash('success','恭喜您,激活成功!!');
             Auth::login($user);
             return rt(1, '更新成功', url('/'));
         }else{
