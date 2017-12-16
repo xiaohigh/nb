@@ -100,5 +100,7 @@
 
 <!-- holder.js -->
 <script src="/bower_components/holderjs/holder.min.js"></script>
+
+@yield('js')
 </body>
 </html>

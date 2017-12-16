@@ -26,6 +26,9 @@
             <div class="blog  markdown-body">
                 {!!$article->content!!}
             </div>
+            <hr>
+            <div class="share-component" data-disabled="google,twitter,facebook" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣"></div>
+
         </aside>
     </div>
 @endsection
@@ -45,3 +48,12 @@
     </aside>
     <!-- 右侧侧边栏 end -->
 @endsection
+
+@section('css')
+    <link rel="stylesheet" href="/bower_components/social-share.js/dist/css/share.min.css">
+@stop
+
+
+@section('js')
+    <script src="/bower_components/social-share.js/dist/js/share.min.js"></script>
+@stop
