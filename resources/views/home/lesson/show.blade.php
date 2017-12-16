@@ -13,7 +13,7 @@
     <div class="video container">
 
         <div class="col-md-10">
-            <video src="{{env('QINIU_URL')}}{{$lesson->video}}" width="100%" controls></video>
+            <video src="{{$lesson->video}}" width="100%" controls></video>
         </div>
         <div class="col-md-2">
             <div class="lessons">

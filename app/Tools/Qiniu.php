@@ -48,7 +48,7 @@ class Qiniu
             //
             $uploadMgr = new UploadManager();
             $res = $uploadMgr->putFile($token, $name, $file->path());
-            return $res[1] != null ? '' : $res[0]['key'];
+            return $res[1] != null ? '' : env('QINIU_URL').$res[0]['key'];
         }
         return false;
     }

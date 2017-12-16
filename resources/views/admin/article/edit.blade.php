@@ -19,7 +19,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="exampleInputPassword1">图片</label>
-            <input class="form-control" name="pic" value="{{$data['article']->pic}}" id="exampleInputPassword1" type="hidden">
+            <input class="form-control" name="pic" value="{{$data['article']->pic}}" id="exampleInputPassword1" type="text">
             <div style="min-height:50px;border:solid 1px #ddd;padding:20px;">
                 <img src="{{$data['article']->pic}}" id="preview" width="200" alt="">
             </div>
@@ -51,8 +51,6 @@
                     @foreach($data['tags'] as $k=>$v)
                     <button type="button" class="btn btn-xs btn-info label @if(in_array($v->id, $data['tag'])) actived @endif" tid="{{$v->id}}"><span>{{$v->name}}</span></button>
                     @endforeach
-                @else
-                    <button type="button" class="btn btn-xs btn-info label" tid="0"><span>test</span></button>
                 @endif
             </div>
             <hr>

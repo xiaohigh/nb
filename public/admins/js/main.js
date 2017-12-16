@@ -9,8 +9,6 @@ $.ajaxSetup({
 });
 
 $(function(){
-    
-
 
     //键盘按下事件 用于弹出上传文件组件
     $(window).keydown(function(e){
@@ -56,7 +54,7 @@ $(function(){
                     var key = $.parseJSON(info.response).key;
                     // //图片路径
                     var domain = up.getOption('domain');
-                    var sourceLink = domain +"/"+ key;
+                    var sourceLink = domain + key;
                     // //图片预览
                     $('#uploaded-url').val(sourceLink);
                     alert('上传成功');

@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{$v->id}}</td>
                         <td>{{$v->email}}</td>
-                        <td><img src="{{env('QINIU_URL')}}{{$v->profile}}" alt="" width="30"></td>
+                        <td><img src="{{$v->profile}}" alt="" width="30"></td>
                         <td><a href="{{url('/user/'.$v->id.'/edit')}}" class="btn btn-info btn-sm">修改</a>&nbsp;&nbsp;<a href="{{url('/user/'.$v->id)}}" class="btn btn-danger btn-sm del">删除</a></td>
                     </tr>
                     @endforeach

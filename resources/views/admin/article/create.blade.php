@@ -51,8 +51,6 @@
                     @foreach($data['tags'] as $k=>$v)
                     <button type="button" class="btn btn-xs btn-info label" tid="{{$v->id}}"><span>{{$v->name}}</span></button>
                     @endforeach
-                @else
-                    <button type="button" class="btn btn-xs btn-info label" tid="0"><span>test</span></button>
                 @endif
             </div>
             <hr>
