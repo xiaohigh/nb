@@ -13,5 +13,11 @@ class UserTableSeeder extends Seeder
     {
         //
         factory(App\Models\User::class, 5)->create();
+
+        $user = \App\Models\User::find(1);
+
+        $user->is_admin = 1;
+
+        $user->save();
     }
 }

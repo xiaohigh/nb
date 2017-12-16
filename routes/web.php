@@ -35,11 +35,12 @@ Route::group([], function(){
 
     Route::get('/test', 'CommonController@test');
 
-
+    //退出登录
+    Route::get('/exit', 'Auth\LoginController@logout')->name('exit');
 });
 
 //后台路由组
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware'=>['auth','admin']], function(){
 
     //后台首页
     Route::get('/admin', 'AdminController@index');
@@ -69,8 +70,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/config', 'ConfigController@edit');
     Route::post('/config', 'ConfigController@update');
 
-    //退出登录
-    Route::get('/exit', 'Auth\LoginController@logout')->name('exit');
+
 
 });
 
