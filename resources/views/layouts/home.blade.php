@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/bower_components/github-markdown-css/github-markdown.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css?a={{rand(1,10000)}}">
+    @yield('css')
 </head>
 <body>
 <!-- 导航 start -->

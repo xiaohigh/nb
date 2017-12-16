@@ -25,6 +25,14 @@ header{
     display:block
 }
 
+.pointer{
+    cursor:pointer;
+}
+
+.border{
+    border:solid 1px #ddd;
+}
+
 .nav-bar .profile{
     margin-right:5px;
 }
@@ -145,6 +153,12 @@ footer{
 .video{
     height:auto;
     overflow: hidden;
+    margin-bottom:20px;
+}
+
+.video .lessons{
+    background: #fff;
+    border-radius: 1em;
 }
 
 .shadow{
@@ -163,3 +177,4 @@ footer{
 }
 
 .course .item{}
+

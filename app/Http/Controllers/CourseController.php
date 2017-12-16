@@ -73,7 +73,10 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        return view('home.course.detail');
+        //读取课程信息
+        $course = Course::findOrFail($id);
+
+        return view('home.course.show', compact('course'));
     }
 
     /**
@@ -139,4 +142,16 @@ class CourseController extends Controller
             return rjson(2, '删除失败');
         }
     }
+
+    /**
+     * @param Request $request
+     */
+    public function lists(Request $request)
+    {
+        //读取课程信息
+        $courses = Course::orderBy('id','desc')->paginate(6);
+
+        return view('home.course.list',compact('courses'));
+    }
+
 }

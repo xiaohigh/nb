@@ -12,21 +12,25 @@ Auth::routes();
 //前台路由组
 Route::group([], function(){
 
-    Route::get('/', 'ArticleController@list');
-
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', 'ArticleController@list')->name('home');
 
     //博客详情
     Route::get('/blog/{id}.html', 'ArticleController@show')->name('blog-detail');
 
     //博客列表
-    Route::get('/blog','ArticleController@list');
+    Route::get('/blog','ArticleController@list')->name('blog-list');
 
     //邮箱验证
     Route::get('/register/confirm/{token}', 'UserController@confirmEmail')->name('confirm_email');
 
-    //
-    Route::get('/exit', 'Auth\LoginController@logout')->name('exit');
+    //视频详情
+    Route::get('/course/{course_id}/lesson-{lesson_id}.html','LessonController@detail')->name('lesson');
+
+    //课程列表
+    Route::get('/courses', 'CourseController@lists')->name('course-list');
+
+    //课程详情
+    Route::get('/course/{id}', 'CourseController@show')->name('course-detail');
 
 
     Route::get('/test', 'CommonController@test');
@@ -64,6 +68,9 @@ Route::group(['middleware'=>'auth'], function(){
     //网站配置管理
     Route::get('/config', 'ConfigController@edit');
     Route::post('/config', 'ConfigController@update');
+
+    //退出登录
+    Route::get('/exit', 'Auth\LoginController@logout')->name('exit');
 
 });
 

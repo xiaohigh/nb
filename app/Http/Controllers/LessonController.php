@@ -76,7 +76,18 @@ class LessonController extends Controller
      */
     public function show($id)
     {
-        //
+        $lesson = Lesson::findOrFail($id);
+
+        return view('home.lesson.show', compact('lesson'));
+    }
+
+    public function detail($course_id, $lesson_id)
+    {
+        $lesson = Lesson::findOrFail($lesson_id);
+
+        $course = Course::findOrFail($course_id);
+
+        return view('home.lesson.show', compact('lesson','course'));
     }
 
     /**

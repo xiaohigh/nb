@@ -16,4 +16,9 @@ class Course extends Model
     {
         return $this->hasMany('App\Models\Lesson');
     }
+
+    public function getLessons()
+    {
+        return $this->lesson()->orderBy('pos')->get();
+    }
 }

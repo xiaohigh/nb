@@ -4,26 +4,24 @@
 <div class="course container">
     <div class="col-md-6">
         <div class="pic">
-            <h1 style="margin:0px;" class="no-padding">PHP 从入门到放弃</h1>
+            <h1 style="margin:0px;" class="no-padding">{{$course->title}}</h1>
             <hr>
-            <p>本节视频将为大家讲解一些关于。。。。。的事情。节视频将为大家讲解一些关于。。。。。的事情。节视频将为大家讲解一些关于。。。。。的事情。
-                节视频将为大家讲解一些关于。。。。。的事情。节视频将为大家讲解一些关于。。。。。的事情。
-                节视频将为大家讲解一些关于。。。。。的事情。节视频将为大家讲解一些关于。。。。。的事情。
-                节视频将为大家讲解一些关于。。。。。的事情。节视频将为大家讲解一些关于。。。。。的事情。
-                节视频将为大家讲解一些关于。。。。。的事情。</p>
+            {!!$course->content!!}
         </div>
     </div>
     <div class="col-md-6">
         <div class="lessons">
-            <img src="holder.js/600x300?bg=#aef" class="img-responsive" alt="">
+            <img data-src="holder.js/600x300?bg=#aef&text=TT" src="{{$course->pic}}" class="img-responsive" alt="">
             <hr>
-            <div class="list-group">
-
-                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="padding-right:10px;"></span>节视频将为大</a>
-                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="padding-right:10px;"></span>Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="padding-right:10px;"></span>Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="padding-right:10px;"></span>Dapibus ac facilisis in</a>
-            </div>
+            <table class="table table-hover border">
+                @foreach($course->getLessons() as $k=>$v)
+                <tr class="pointer">
+                    <td width="5%">{{$k+1}}.</td>
+                    <td width="70%"><a href="{{route('lesson',['course_id'=>$course->id,'lesson_id'=>$v->id])}}"><span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="padding-right:5px;"></span>{{$v->title}}</a></td>
+                    <td width="25%">{{formatSeconds($v->long)}}</td>
+                </tr>
+                @endforeach
+            </table>
         </div>
     </div>
 </div>

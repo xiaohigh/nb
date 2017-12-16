@@ -18,6 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="/admins/css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="/admins/css/main.css">
+    @yield('css')
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
