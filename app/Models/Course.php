@@ -11,4 +11,9 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Models\Tag');
     }
+
+    public function lesson()
+    {
+        return $this->hasMany('App\Models\Lesson');
+    }
 }

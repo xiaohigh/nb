@@ -58,6 +58,9 @@ Route::group(['middleware'=>'auth'], function(){
     //课程管理
     Route::resource('course', 'CourseController');
 
+    //视频
+    Route::resource('lesson','LessonController');
+
     //网站配置管理
     Route::get('/config', 'ConfigController@edit');
     Route::post('/config', 'ConfigController@update');

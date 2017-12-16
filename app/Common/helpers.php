@@ -52,3 +52,14 @@ function handleTags(String $str=null)
 {
     return $str ? explode('_', trim($str,'_')) : [];
 }
+
+function formatSeconds($seconds)
+{
+    $minutes = $seconds / 60;
+    if($minutes > 0) {
+        return sprintf('%d分%d秒', $minutes, $seconds % 60);
+    }else{
+        return sprintf('%d秒', $seconds);
+    }
+}
+

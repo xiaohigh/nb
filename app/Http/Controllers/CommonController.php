@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 // 引入鉴权类
 use Qiniu\Auth;
@@ -49,6 +50,15 @@ class CommonController extends Controller
     public function test(Faker $faker)
     {
         //测试翻译
-        dd(trans('user.test'));
+        //dd(trans('user.test'));
+        $lesson = Lesson::find(1);
+        $course = \App\Models\Course::all()->random(1)->first();
+        $lesson->course()->associate($course);
+
+        $lesson->save();
+
+//        dd($lesson->course()->ass);
+
+
     }
 }

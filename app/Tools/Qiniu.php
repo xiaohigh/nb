@@ -44,7 +44,7 @@ class Qiniu
             //获取token
             $token = self::getToken();
             //生成文件名
-            $name = uniqid('avatar_').'.'.$file->extension();
+            $name = date('YmdHis').uniqid().'.'.$file->getClientOriginalExtension();
             //
             $uploadMgr = new UploadManager();
             $res = $uploadMgr->putFile($token, $name, $file->path());

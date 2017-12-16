@@ -19,7 +19,7 @@
                             <td>{{$v->id}}</td>
                             <td>{{$v->title}}</td>
                             <td><img src="{{$v->pic}}" width="50" alt=""></td>
-                            <td><a href="{{url('/course/'.$v->id.'/edit')}}" class="btn btn-info btn-sm">修改</a>&nbsp;&nbsp;<button href="{{url('/course/'.$v->id)}}" class="btn btn-danger btn-sm del" onclick="del(this)">删除</button></td>
+                            <td><a class="btn btn-success btn-sm" href="/lesson/create?course_id={{$v->id}}">添加视频</a>&nbsp;&nbsp;<a class="btn btn-success btn-sm" href="/lesson?course_id={{$v->id}}">视频列表</a>&nbsp;&nbsp;<a href="{{url('/course/'.$v->id.'/edit')}}" class="btn btn-info btn-sm">修改</a>&nbsp;&nbsp;<button href="{{url('/course/'.$v->id)}}" class="btn btn-danger btn-sm del" onclick="del(this)">删除</button></td>
                         </tr>
                     @endforeach
 
