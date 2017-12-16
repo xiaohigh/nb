@@ -35,8 +35,10 @@
 @section('aside')
 <!-- 右侧侧边栏 start -->
 <aside class="col-md-3 right">
+    @component('home.components.cate')
+    @endcomponent
 
-    @component('home.components.tags', ['tags' => $tags])
+    @component('home.components.tags')
     @endcomponent
 
     @component('home.components.author')

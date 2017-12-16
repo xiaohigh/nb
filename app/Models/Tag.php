@@ -11,4 +11,9 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Models\Article');
     }
+
+    public static function getTags()
+    {
+        return self::all();
+    }
 }

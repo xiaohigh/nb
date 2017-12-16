@@ -33,13 +33,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav" id="nav">
-                    <li class="@if(!request('cate_id')) active @endif"><a href="/">首页</a></li>
-                    @foreach(getTopMenu() as $k=>$v)
-                    <li class="@if(request('cate_id') == $v->id) active @endif"><a href="{{url('/blog?cate_id='.$v->id)}}">{{$v->name}}</a></li>
-                    @endforeach
-                    <li>　 </li>
-                </ul>
+                @include('home.share.nav')
                 <form class="navbar-form navbar-left" action="/blog">
                     <div class="form-group">
                         <input type="text" class="form-control"  value="{{$request->keywords or ''}}" name="keywords" placeholder="搜索">

@@ -112,11 +112,8 @@ class ArticleController extends Controller
         //获取文章模型
         $article = Article::findOrFail($id);
 
-        //获取标签
-        $tags = Tag::all();
-
         //解析模板
-        return view('home.blog.show', compact('article','tags'));
+        return view('home.blog.show', compact('article'));
     }
 
     /**
@@ -242,9 +239,6 @@ class ArticleController extends Controller
             }
         })->orderBy('id','desc')->paginate(5);
 
-        //获取标签信息
-        $tags = Tag::all();
-
-        return view('home.blog.list', compact('blogs','tags'));
+        return view('home.blog.list', compact('blogs'));
     }
 }

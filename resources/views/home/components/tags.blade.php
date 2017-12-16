@@ -1,3 +1,4 @@
+<?php $tags = \App\Models\Tag::getTags() ?>
 <!-- 标签  start -->
 <div class="panel panel-default" id="tags">
     <div class="panel-heading author">标签</div>

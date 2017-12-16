@@ -4,11 +4,11 @@
     <div class="panel-body text-center">
         <!-- 头像 start -->
         <div>
-            <img data-src="holder.js/80x80?text=图" src="" width="80" class="img-circle img-thumbnail img-responsive">
+            <img data-src="holder.js/80x80?text=图" src="http://cdn.xiaohigh.com/xiaohigh.png" width="80" class="img-circle img-thumbnail img-responsive">
         </div>
         <!-- 头像 end -->
         <div class="message">
-            这个家伙很懒,什么都没有写下
+            知识改变命运,技术改变生活
         </div>
     </div>
 </div>

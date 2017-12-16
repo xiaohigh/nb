@@ -44,5 +44,13 @@ class ArcCate extends Model
         return $cates;
     }
 
+    /**
+     * 获取文章分类
+     */
+    public static function getCates()
+    {
+        return self::all();
+    }
+
 
 }
