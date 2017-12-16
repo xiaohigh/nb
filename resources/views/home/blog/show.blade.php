@@ -10,14 +10,14 @@
             <h1>{{$article->title}}</h1>
             <div class="detail-info">
                 <div class="pull-left m-r-10">
-                    <a href="/blog?cate_id={{$article->cate_id}}"><span class="label label-warning">分类:{{$article->cate->name}}</span></a>
+                    <a href="{{route('blog-list', ['cate_id'=>$article->cate_id])}}"><span class="label label-warning">分类:{{isset($article->cate) ? $article->cate->name : '无'}}</span></a>
                 </div>
                 <div class="pull-left m-r-10">
                     <span class="label label-success">{{substr($article->created_at, 0, 10)}}</span>
                 </div>
                 <div class="pull-left m-r-10">
                     @foreach($article->tags as $k=>$v)
-                        <a href="/blog?tag={{$v->name}}"><span class="label label-info">{{$v->name}}</span></a>
+                        <a href="{{route('blog-list',['tag'=>$v->name])}}"><span class="label label-info">{{$v->name}}</span></a>
                     @endforeach
                 </div>
             </div>
