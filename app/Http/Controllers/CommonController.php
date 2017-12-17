@@ -60,8 +60,9 @@ class CommonController extends Controller
 //        $lesson->save();
 
 //        dd($lesson->course()->ass);
-        event(new UserRegistered(User::find(19)));
+//        event(new UserRegistered(User::find(19)));
 
+        return redirect('/')->with('success','成功');
 
 
     }

@@ -18,7 +18,10 @@
     <meta name="keywords" content="{{C('keywords')}}">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/bower_components/github-markdown-css/github-markdown.css">
-    <link rel="stylesheet" type="text/css" href="/css/common.css?a={{rand(1,10000)}}">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    <script src="/bower_components/jquery/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="/bower_components/holderjs/holder.min.js"></script>
     @yield('css')
 </head>
 <body>
@@ -71,7 +74,7 @@
 </nav>
 <!-- 导航 end -->
 
-@include('home.share.notifacation')
+
 
 @section('container')
 <div class="container">
@@ -96,17 +99,12 @@
 </div>
 @show
 
+@include('home.share.notifacation')
+
 <footer>
     <div class="text-center copyright">Copyright © 2017 All Rights Reserved. 京ICP备13041202号 Powered by xiaohigh</div>
 </footer>
-<!-- jquery文件 -->
-<script src="/bower_components/jquery/jquery.min.js"></script>
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
-<!-- holder.js -->
-<script src="/bower_components/holderjs/holder.min.js"></script>
 
 @yield('js')
 </body>
