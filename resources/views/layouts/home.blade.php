@@ -37,11 +37,14 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 @include('home.share.nav')
+
+                @section('search')
                 <form class="navbar-form navbar-left" action="/blog">
                     <div class="form-group">
                         <input type="text" class="form-control"  value="{{$request->keywords or ''}}" name="keywords" placeholder="搜索">
                     </div>
                 </form>
+                @show
 
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())

@@ -15,7 +15,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -25,8 +24,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        //邮件发送
-        //Mail::to($request->user())->send(new UserRegistered);
-        return '222';
+        return view('home.index');
     }
 }

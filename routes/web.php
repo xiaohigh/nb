@@ -13,7 +13,7 @@ Auth::routes();
 //前台路由组
 Route::group([], function(){
 
-    Route::get('/', 'ArticleController@list')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 
     //博客详情
     Route::get('/blog/{id}.html', 'ArticleController@show')->name('blog-detail');
