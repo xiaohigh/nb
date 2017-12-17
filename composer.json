@@ -56,6 +56,9 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
+        ],
+        "install-extensions":[
+            "sudo apt-get install ffmpeg -y"
         ]
     },
     "config": {
