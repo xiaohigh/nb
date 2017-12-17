@@ -32,7 +32,7 @@ function C($key)
     if(!$configs) {
         $configs = \App\Models\Config::find(1);
     }
-    return $configs->$key ? : '';
+    return $configs->$key ?: '';
 }
 
 /**

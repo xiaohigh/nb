@@ -26,3 +26,5 @@
     </div>
 </div>
 @stop
+
+@section('title',$course->title)
