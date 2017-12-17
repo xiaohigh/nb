@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRegistered;
 use App\Models\Lesson;
+use App\Models\User;
 use Illuminate\Http\Request;
 // 引入鉴权类
 use Qiniu\Auth;
@@ -47,17 +49,19 @@ class CommonController extends Controller
     }
 
 
-    public function test(Faker $faker)
+    public function test()
     {
         //测试翻译
         //dd(trans('user.test'));
-        $lesson = Lesson::find(1);
-        $course = \App\Models\Course::all()->random(1)->first();
-        $lesson->course()->associate($course);
-
-        $lesson->save();
+//        $lesson = Lesson::find(1);
+//        $course = \App\Models\Course::all()->random(1)->first();
+//        $lesson->course()->associate($course);
+//
+//        $lesson->save();
 
 //        dd($lesson->course()->ass);
+        event(new UserRegistered(User::find(19)));
+
 
 
     }

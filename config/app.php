@@ -179,6 +179,7 @@ return [
         //表单创建提供器
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
         Overtrue\LaravelLang\TranslationServiceProvider::class,
+        Naux\Mail\SendCloudServiceProvider::class,
 
     ],
 

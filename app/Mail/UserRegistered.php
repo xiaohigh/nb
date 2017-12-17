@@ -30,6 +30,6 @@ class UserRegistered extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.register');
+        return $this->subject('用户激活邮件')->view('mail.register');
     }
 }
