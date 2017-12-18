@@ -47,6 +47,9 @@
         }
     },
     "scripts": {
+        "composer-install":[
+            "composer install"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
@@ -59,6 +62,18 @@
         ],
         "install-extensions":[
             "sudo apt-get install ffmpeg -y"
+        ],
+        "bower-install":[
+            "bower install --allow-root"
+        ],
+        "deploy":[
+            "@composer-install",
+            "@post-root-package-install",
+            "@post-create-project-cmd",
+            "@post-create-project-cmd",
+            "@post-autoload-dump",
+            "@install-extensions",
+            "@bower-install"
         ]
     },
     "config": {
