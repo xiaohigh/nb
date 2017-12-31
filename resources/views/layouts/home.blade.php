@@ -58,7 +58,9 @@
                     @if(Auth::check())<li class="dropdown">
                         <a href="#" class="dropdown-toggle block" data-toggle="dropdown" role="button"><img data-src="holder.js/30x30?text=TT" src="{{Auth::user()->profile}}" width="30" class="img-circle profile" alt="">&nbsp;&nbsp;&nbsp;{{Auth::user()->name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">个人中心</a></li>
+                            <li><a href="{{route('user-setting')}}">基本信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{route('set-password')}}">修改密码</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{route('exit')}}">退出</a></li>
                         </ul>
@@ -105,7 +107,6 @@
 <footer>
     <div class="text-center copyright">Copyright © 2017 All Rights Reserved. 京ICP备13041202号 Powered by xiaohigh</div>
 </footer>
-
 
 @yield('js')
 </body>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\User\AddForm;
+use App\Forms\User\UpdateForm;
+use App\Models\User;
 use App\Tools\Qiniu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Kris\LaravelFormBuilder\FormBuilder;
-use App\Forms\User\AddForm;
-use App\Forms\User\UpdateForm;
-
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -70,17 +70,6 @@ class UserController extends Controller
             return rt(0, '添加失败');
         }
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -146,7 +135,6 @@ class UserController extends Controller
         }else{
             return rjson(0, '失败');
         }
-
     }
 
     /**
@@ -168,6 +156,74 @@ class UserController extends Controller
         }else{
             return rt(0, '更新失败', url('/'));
         }
+    }
+
+    /**
+     * 用户基本信息修改
+     */
+    public function setting(Request $request)
+    {
+        $user = Auth::user();
+
+        //检测是 GET 还是 POST
+        if(!$request->has('_token')) {
+            return view('home.user.center', compact('user'));
+        }
+
+        //表单验证
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+
+        //获取信息
+        $user->email = $request->email;
+        if($request->hasFile('profile')) {
+            $user->profile = Qiniu::uploadFile($request->file('profile'));
+        }
+
+        //用户更新
+        if($user->save()) {
+            return back()->with('success','更新成功');
+        }else{
+            return back()->with('error','更新失败,请重试!');
+        }
+    }
+
+    /**
+     * 修改密码
+     */
+    public function setPassword(Request $request)
+    {
+        $user = Auth::user();
+
+        if(!$request->has('_token')) {
+            return view('home.user.password');
+        }
+
+        //验证密码
+        if(!Hash::check($request->old_password, $user->password)) {
+            return back()->with('danger','密码错误,请重新输入');
+        }
+
+        //表单验证
+        $this->validate($request, [
+            'new_password' => 'required|min:6',
+            're_password' => 'same:new_password',
+        ],[
+            'new_password.required' => '新密码不能为空',
+            'new_password.min' => '密码最低为6位',
+            're_password.same' => '两次密码不一样',
+        ]);
+
+        // 加密密码
+        $user->password = Hash::make($request->new_password);
+
+        if($user->save()) {
+            return back()->with('success','密码修改成功');
+        } else {
+            return back()->with('danger','密码修改是吧');
+        }
+
 
     }
 }

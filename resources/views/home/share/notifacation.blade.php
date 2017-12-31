@@ -15,7 +15,6 @@
                 </div>
             </div>
         </div>
-
         <script>
             $('.modal').modal();
         </script>

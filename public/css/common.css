@@ -22,6 +22,7 @@ header{
 
 #nav > li > a{
     padding: 15px 25px;
+    font-weight: 300;
 }
 
 
@@ -182,14 +183,23 @@ footer{
     transition: all .2s ease;
 }
 
-.courses{
-
-}
-
 .courses .item{
     padding:15px;
     background: #fff;
     margin-bottom:20px;
+}
+
+.user-info-modify{
+    height:auto;
+    overflow: hidden;
+    background: white;
+    padding:2em;
+}
+
+.user-info-modify h2{
+    padding:0px;
+    margin:0px;
+    font-weight: 300;
 }
 
 

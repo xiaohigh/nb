@@ -17,6 +17,12 @@ Route::group([], function(){
     Route::get('/oauth/google', 'SocialiteController@google')->name('auth_google');
 });
 
+//前台用户个人中心
+Route::group(['middleware'=>'auth'], function(){
+    Route::any('/setting', 'UserController@setting')->name('user-setting');
+    Route::any('/set-password', 'UserController@setPassword')->name('set-password');
+});
+
 //前台路由组
 Route::group([], function(){
 
