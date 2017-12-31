@@ -22,6 +22,7 @@
     <script src="/bower_components/jquery/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="/bower_components/holderjs/holder.min.js"></script>
+
     @yield('css')
 </head>
 <body>

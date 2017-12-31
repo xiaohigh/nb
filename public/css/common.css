@@ -134,6 +134,14 @@ footer{
     padding:50px 0px;
 }
 
+.login .panel-default>.panel-heading{
+    background:white;
+}
+
+.login .panel-default>.panel-footer{
+    background:white;
+}
+
 .register .panel .panel-heading{
     background: #fff;
 }
@@ -184,5 +192,5 @@ footer{
     margin-bottom:20px;
 }
 
-.course .item{}
+
 

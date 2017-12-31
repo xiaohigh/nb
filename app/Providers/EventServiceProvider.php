@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserRegistered' => [
             'App\Listeners\UserConfirmEmail',
         ],
+
+        'SocialiteProviders\Manager\SocialiteWasCalled' => [
+            'SocialiteProviders\QQ\QqExtendSocialite@handle'
+        ]
     ];
 
     /**

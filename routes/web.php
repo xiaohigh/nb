@@ -6,9 +6,16 @@
 |--------------------------------------------------------------------------
 */
 Route::get('/test', 'CommonController@test');
+Route::get('/test1', 'CommonController@test1');
 
 //登录授权路由组
 Auth::routes();
+
+// 三方登录
+Route::group([], function(){
+    Route::get('/oauth/github', 'SocialiteController@github')->name('auth_github');
+    Route::get('/oauth/google', 'SocialiteController@google')->name('auth_google');
+});
 
 //前台路由组
 Route::group([], function(){
@@ -67,9 +74,6 @@ Route::group(['middleware'=>['auth','admin']], function(){
     //网站配置管理
     Route::get('/config', 'ConfigController@edit');
     Route::post('/config', 'ConfigController@update');
-
-
-
 });
 
 

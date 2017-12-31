@@ -5,13 +5,11 @@ namespace App\Http\Controllers;
 use App\Events\UserRegistered;
 use App\Models\Lesson;
 use App\Models\User;
-use Illuminate\Http\Request;
-// 引入鉴权类
-use Qiniu\Auth;
-// 引入上传类
-use Qiniu\Storage\UploadManager;
-
 use Faker\Generator as Faker;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Qiniu\Auth;
+use Qiniu\Storage\UploadManager;
 
 class CommonController extends Controller
 {
@@ -51,19 +49,14 @@ class CommonController extends Controller
 
     public function test()
     {
-        //测试翻译
-        //dd(trans('user.test'));
-//        $lesson = Lesson::find(1);
-//        $course = \App\Models\Course::all()->random(1)->first();
-//        $lesson->course()->associate($course);
-//
-//        $lesson->save();
+        //测试翻译 gTkVf84kCueD
+        $client = new Client;
 
-//        dd($lesson->course()->ass);
-//        event(new UserRegistered(User::find(19)));
-
-        return redirect('/')->with('success','成功');
-
+        $response = $client->request('GET', 'https://www.google.com/', ['proxy' =>
+                                                            '192.168.199.111:1087'
+                                                        ]);
+        echo $response -> getBody();
 
     }
+
 }

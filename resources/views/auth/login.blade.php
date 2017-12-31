@@ -61,6 +61,12 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="panel-footer text-center">
+                    <a href="{{route('auth_github')}}" class="btn btn-default"><span class="fa fa-twitter"></span>GitHub 登录</a>
+                    <a href="{{route('auth_google')}}" class="btn btn-default"><span class="fa fa-twitter"></span>Google 登录</a>
+                    
+                </div>
             </div>
         </div>
     </div>
