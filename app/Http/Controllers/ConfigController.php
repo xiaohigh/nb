@@ -12,7 +12,6 @@ class ConfigController extends Controller
 {
     /**
      * 配置修改
-     *
      */
     public function edit(FormBuilder $formBuilder)
     {
@@ -30,7 +29,6 @@ class ConfigController extends Controller
 
     /**
      * 配置更新
-     *
      */
     public function update(Request $request)
     {

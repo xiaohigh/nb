@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 Route::get('/test', 'CommonController@test');
-Route::get('/test1', 'CommonController@test1');
+
 
 //登录授权路由组
 Auth::routes();
